@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>119㎡装修效果图与提示词总览</title>
+  <style>
+    :root {
+      --bg: #f6f1ea;
+      --paper: #fffdfa;
+      --ink: #2f2a24;
+      --muted: #72675d;
+      --line: #ded1c3;
+      --wood: #b88955;
+      --sage: #7c8c73;
+      --tile: #d8d0c8;
+      --warn: #a96b48;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.68;
+    }
+    a { color: inherit; }
+    header {
+      padding: 34px clamp(18px, 4vw, 62px) 24px;
+      background: #eadccc;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 58px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .lead {
+      max-width: 960px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    main { padding: 24px clamp(18px, 4vw, 62px) 54px; }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 0 16px;
+      background: linear-gradient(var(--bg) 72%, rgba(246,241,234,0));
+    }
+    button {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 38px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font: inherit;
+    }
+    button.active {
+      background: var(--wood);
+      border-color: var(--wood);
+      color: white;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .metric {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .metric span { color: var(--muted); font-size: 14px; }
+    .note {
+      margin: 0 0 20px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--sage);
+      background: #f4f6ef;
+      color: #59634e;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--tile);
+    }
+    .body { padding: 14px 15px 16px; }
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+    .tag {
+      flex: 0 0 auto;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #eef2e8;
+      color: #526047;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .checks {
+      margin: 8px 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    details {
+      border-top: 1px solid #eadfd4;
+      padding-top: 10px;
+    }
+    summary {
+      cursor: pointer;
+      color: var(--wood);
+      font-weight: 700;
+    }
+    .prompt {
+      white-space: pre-wrap;
+      color: #514840;
+      font-size: 14px;
+      margin: 10px 0 0;
+    }
+    .warn { color: var(--warn); font-weight: 700; }
+    footer {
+      padding: 24px clamp(18px, 4vw, 62px) 38px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #ede1d2;
+    }
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      .grid, .summary { grid-template-columns: 1fr; }
+      .toolbar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>119㎡装修效果图与提示词总览</h1>
+    <p class="lead">所有图片基于统一户型方向生成：北上、南下、东右、西左。每张图下方都附对应提示词摘要和检查点，后续可按单张继续重生成或替换。</p>
+  </header>
+  <main>
+    <section class="summary">
+      <div class="metric"><strong id="totalCount">37</strong><span>已生成图片</span></div>
+      <div class="metric"><strong>9</strong><span>空间四向视图</span></div>
+      <div class="metric"><strong>1</strong><span>整体俯视图</span></div>
+      <div class="metric"><strong>UTF-8</strong><span>提示词文档编码</span></div>
+    </section>
+    <p class="note">重点修正：客卫/家政间按最新现场图处理为“干区台盆 + 独立马桶小间 + 尽端家政洗烘收纳”，不生成淋浴房、浴缸、花洒或玻璃淋浴隔断。</p>
+    <nav class="toolbar" id="filters"></nav>
+    <section class="grid" id="gallery"></section>
+  </main>
+  <footer>
+    关联文件：<a href="119m2-image-generation-prompts.md">119m2-image-generation-prompts.md</a>。正式落地仍需现场复尺、CAD施工图、水电图和定制柜深化图。
+  </footer>
+  <script>
+    const base = {
+      "整体": "整体3D俯视，北上南下东右西左，西北次卧2850×3500，东北电竞房2500×3500，中西玄关餐厅，中东从北到南为上卫、厨房、客卫/家政间，西南客厅4200×5300，东南主卧3600×4700。客卫/家政间必须是干区台盆、独立马桶小间、尽端洗烘家政柜，不要淋浴。",
+      "玄关餐厅": "中西侧玄关餐厅，纵深约4150mm。西侧入户门，鞋柜深350-400mm，开放挂衣区700-900mm，换鞋凳800-1000×350×420mm，餐桌1600×800mm长边东西向，餐边柜深350-400mm靠厨房入口。奶油白、浅橡木、米灰柔光砖、3000K暖光。",
+      "客厅": "西南客厅4200×5300mm，南侧大窗。电视在西墙，65-85寸，朝东；电视柜2400-3000×350mm；沙发2800-3200×900mm在东侧朝西；地毯2000×3000mm，圆茶几700-900mm。奶油原木风，真实住宅尺度。",
+      "厨房": "中东厨房3600×2250mm，西侧入口，北侧/窗边水槽朝南，600mm洗碗机靠水槽，东侧灶台朝西，入口侧冰箱900×700×1900mm和600mm蒸烤箱高柜。地柜600mm，吊柜350mm，过道约900mm。",
+      "上卫生间": "厨房北侧紧凑公卫约2000×1700mm。浴室柜700-900mm，镜柜120-150mm，马桶区700-800mm，东侧/东南角淋浴区≥900×900mm，玻璃隔断。米灰柔光砖，干湿分离，不要浴缸。",
+      "客卫/家政间": "厨房南侧、主卧北侧，约3600×1950mm。三段式：入口干区台盆900-1200×500-550mm和灰色镜柜；尽端600×600mm洗衣机/烘干机叠放，总高1700-1800mm，家政柜深350-600mm；东侧独立马桶小间宽800-900mm，小窗、暗装水箱。不要淋浴房。",
+      "主卧": "东南主卧3600×4700mm，南侧大窗。床1800×2000mm，床头靠东墙、床尾朝西；东墙600mm深香槟/浅灰金属衣柜，柜门朝西；南窗前梳妆台900-1200×400mm。浅木地板、燕麦床品、2700-3000K暖光。",
+      "电竞房": "东北电竞房2500×3500mm，北侧窗。电竞桌1800-2200×700mm在北窗下，显示器朝南，椅子朝北；西墙450-600mm深到顶收纳柜；东墙300-350mm深展示墙/洞洞板；少量氛围灯，不要全黑赛博风。",
+      "西北次卧": "西北次卧2850×3500mm，北侧窗。书桌1200-1500×550mm在北窗下，椅子朝北；床1500×2000mm靠西侧或中部偏西；衣柜深550-600mm靠南侧门边/西墙，柜门朝东。温暖实用，不做主卧套房。",
+      "衣帽过道": "两个北卧下方、中部偏西过渡区，约1700mm进深。到顶收纳柜深400-600mm，开放挂衣/家政区700-900mm，通道净宽≥900mm。不是独立大衣帽间，保持通道顺畅。"
+    };
+    const items = [
+      ["整体","整体俯视","00-overall-isometric.png","已重生成，客卫/家政间不带淋浴。"],
+      ["玄关餐厅","北视角","01-foyer-dining-north.png","玄关柜、挂衣区、餐桌和餐边柜位置正确。"],
+      ["玄关餐厅","南视角","02-foyer-dining-south.png","从餐厅看入户，入户门和挂衣区清楚。"],
+      ["玄关餐厅","东视角","03-foyer-dining-east.png","厨房入口边看向西侧入户，关系正确。"],
+      ["玄关餐厅","西视角","04-foyer-dining-west.png","从入户向东看餐厅和厨房入口。"],
+      ["客厅","北视角","05-living-north.png","电视西墙、沙发东侧、南窗可见。"],
+      ["客厅","南视角","06-living-south.png","从南窗看餐厅，厨房保持在中东侧。"],
+      ["客厅","东视角","07-living-east.png","沙发侧看西墙电视，方向正确。"],
+      ["客厅","西视角","08-living-west.png","电视墙侧看东侧沙发，尺度合适。"],
+      ["厨房","北视角","09-kitchen-north.png","入口冰箱高柜、水槽、灶台方向正确。"],
+      ["厨房","南视角","10-kitchen-south.png","从客卫方向看北侧水槽和东侧灶台。"],
+      ["厨房","东视角","11-kitchen-east.png","从灶台侧看西侧入口和冰箱高柜。"],
+      ["厨房","西视角","12-kitchen-west.png","从餐厅入口看厨房，三件套清楚。"],
+      ["上卫生间","北视角","13-upper-bath-north.png","紧凑公卫，浴室柜、马桶、淋浴分区清楚。"],
+      ["上卫生间","南视角","14-upper-bath-south.png","门口看三件套，尺度不夸张。"],
+      ["上卫生间","东视角","15-upper-bath-east.png","淋浴侧看台盆和马桶。"],
+      ["上卫生间","西视角","16-upper-bath-west.png","门口看东侧淋浴，干湿分离。"],
+      ["客卫/家政间","北视角","17-guest-bath-housekeeping-north.png","左台盆、尽端洗烘、右马桶小间，无淋浴。"],
+      ["客卫/家政间","南视角","18-guest-bath-housekeeping-south.png","洗烘端看入口，台盆和马桶间清楚。"],
+      ["客卫/家政间","东视角","19-guest-bath-housekeeping-east.png","马桶小间内看外侧台盆和洗烘。"],
+      ["客卫/家政间","西视角","20-guest-bath-housekeeping-west.png","台盆侧看马桶小间和家政柜，无淋浴。"],
+      ["主卧","北视角","21-master-bedroom-north.png","床头东墙、东侧衣柜、南窗梳妆台。"],
+      ["主卧","南视角","22-master-bedroom-south.png","南窗看北侧，东墙衣柜正确。"],
+      ["主卧","东视角","23-master-bedroom-east.png","衣柜/床头侧看床尾，方向正确。"],
+      ["主卧","西视角","24-master-bedroom-west.png","床尾看东墙床头和衣柜，合格。"],
+      ["电竞房","北视角","25-gaming-room-north.png","桌在北窗下，西柜东展示墙。"],
+      ["电竞房","南视角","26-gaming-room-south.png","门口看北窗下电竞桌，椅子朝北。"],
+      ["电竞房","东视角","27-gaming-room-east.png","展示墙侧看西柜和北窗桌。"],
+      ["电竞房","西视角","28-gaming-room-west.png","收纳柜侧看东展示墙，桌仍在北窗下。"],
+      ["西北次卧","北视角","29-secondary-bedroom-north.png","北窗书桌、床和门边衣柜清楚。"],
+      ["西北次卧","南视角","30-secondary-bedroom-south.png","门口看北窗书桌，床不堵门。"],
+      ["西北次卧","东视角","31-secondary-bedroom-east.png","东侧看西侧床和北窗书桌。"],
+      ["西北次卧","西视角","32-secondary-bedroom-west.png","床边看通道、衣柜和书桌。"],
+      ["衣帽过道","北视角","33-passage-storage-north.png","收纳、挂衣和通道关系正确。"],
+      ["衣帽过道","南视角","34-passage-storage-south.png","餐厅侧看北卧门和收纳柜。"],
+      ["衣帽过道","东视角","35-passage-storage-east.png","厨房侧看玄关方向，通道不堵。"],
+      ["衣帽过道","西视角","36-passage-storage-west.png","玄关侧看厨房/卫浴入口方向。"]
+    ];
+    const gallery = document.getElementById("gallery");
+    const filters = document.getElementById("filters");
+    const groups = ["全部", ...Array.from(new Set(items.map(item => item[0])))];
+    let active = "全部";
+    function renderFilters() {
+      filters.innerHTML = "";
+      groups.forEach(group => {
+        const btn = document.createElement("button");
+        btn.textContent = group;
+        btn.className = group === active ? "active" : "";
+        btn.onclick = () => { active = group; renderFilters(); renderCards(); };
+        filters.appendChild(btn);
+      });
+    }
+    function renderCards() {
+      gallery.innerHTML = "";
+      items.filter(item => active === "全部" || item[0] === active).forEach(([room, view, file, check]) => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="generated-renders/${file}" alt="${room}${view}">
+          <div class="body">
+            <div class="meta"><h2>${room} · ${view}</h2><span class="tag">${file.split("-")[0]}</span></div>
+            <div class="checks">检查：${check}</div>
+            <details>
+              <summary>查看对应提示词</summary>
+              <div class="prompt">${base[room]}\n\n视角：${view}。按统一规则：北视角站北向南，南视角站南向北，东视角站东向西，西视角站西向东。风格统一为奶油原木/灰米现代，真实室内摄影、自然光、柔和阴影、无人物、无文字、无水印。</div>
+            </details>
+          </div>`;
+        gallery.appendChild(card);
+      });
+    }
+    document.getElementById("totalCount").textContent = items.length;
+    renderFilters();
+    renderCards();
+  </script>
+</body>
+</html>

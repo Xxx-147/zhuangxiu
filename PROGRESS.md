@@ -1,16 +1,14 @@
-# 装修效果图生成暂停记录
+# 装修效果图生成记录
 
 记录时间：2026-06-04
 
-## 当前暂停点
+## 当前状态
 
-已暂停继续生成图片。最后完成并保存的图片是：
-
-- `outputs/generated-renders/25-gaming-room-north.png`
+已完成本轮图片生成、检查总览和新网站制作。已生成并保存 37 张图：整体俯视 1 张，9 个空间各 4 个方向视图。
 
 ## 已完成图片
 
-- `00-overall-isometric.png`：整体俯视图，候选图。注意：早期生成，客卫/家政间可能仍带有淋浴表达，最终检查时建议优先重生成。
+- `00-overall-isometric.png`：整体俯视图，已重生成，客卫/家政间按无淋浴处理。
 - `01-foyer-dining-north.png`
 - `02-foyer-dining-south.png`
 - `03-foyer-dining-east.png`
@@ -36,6 +34,17 @@
 - `23-master-bedroom-east.png`
 - `24-master-bedroom-west.png`
 - `25-gaming-room-north.png`
+- `26-gaming-room-south.png`
+- `27-gaming-room-east.png`
+- `28-gaming-room-west.png`
+- `29-secondary-bedroom-north.png`
+- `30-secondary-bedroom-south.png`
+- `31-secondary-bedroom-east.png`
+- `32-secondary-bedroom-west.png`
+- `33-passage-storage-north.png`
+- `34-passage-storage-south.png`
+- `35-passage-storage-east.png`
+- `36-passage-storage-west.png`
 
 ## 已确认的核心约束
 
@@ -46,14 +55,17 @@
 - 主卧：位于东南侧，约 `3600mm × 4700mm`；床头靠东墙，床尾朝西；东侧为金属衣柜；南窗前梳妆台。
 - 电竞房：位于东北侧，约 `2500mm × 3500mm`；电竞桌在北窗下；椅子朝北；西墙收纳柜；东墙展示墙。
 
-## 待继续任务
+## 已完成网页
 
-1. 继续生成电竞房剩余三张：南视角、东视角、西视角。
-2. 生成西北普通次卧四张：北、南、东、西视角。
-3. 生成衣帽/过道区四张：北、南、东、西视角。
-4. 最终检查已生成图片是否符合统一提示词。
-5. 如需修正，优先重生成：
-   - `00-overall-isometric.png`：客卫/家政间可能带淋浴。
-   - `24-master-bedroom-west.png`：主卧西视角中衣柜方向表达可再优化。
-6. 新建网站，把每张图和对应提示词放在同一页面中，并优化网页展示。
+新网站：
 
+- `outputs/render-prompt-gallery.html`
+
+辅助检查图：
+
+- `outputs/render-contact-sheet.jpg`
+
+## 后续可选优化
+
+1. 如需更严格施工表达，可继续按单张重生成局部视角。
+2. 如需上线，可把 `outputs/render-prompt-gallery.html` 作为 GitHub Pages 或静态站点入口。
